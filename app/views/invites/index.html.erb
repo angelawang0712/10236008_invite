@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Happy to Learn</h1>
+
+<br>
+<div class="jumbotron">
+  <h1>happy to learn ruby</h1>
+  <p>學程式要開心、學程式要有伴，所以我們替大家開了一個 Slack 群組，讓大家可以在群組裡討論，找到學習的伴。</p>
+  <%= link_to '我要參加', new_invite_path ,class:'btn btn-default btn-lg'%>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Activity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invites.each do |invite| %>
+      <tr>
+        <td><%= invite.name %></td>
+        <td><%= invite.email %></td>
+        <td><%= invite.activity.try(:name) %></td>
+        <td><%= link_to 'Show', invite %></td>
+        <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+        <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
